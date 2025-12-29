@@ -68,7 +68,7 @@ export default async function ans({params}){
 
 async function gettl(id){
   try{
-    let ans = await fetch(`https://api.stackexchange.com/2.3/answers/${id}/?site=stackoverflow&filter=withbody&key=JBxjVFdP6JMHtmjMnFhHpQ((`);
+    let ans = await fetch(`https://api.stackexchange.com/2.3/answers/${id}/?site=stackoverflow&filter=withbody&key=${process.env.KEY}`);
     let resans = await ans.json();
     let qid = resans.items[0].question_id;
     let qsn = await fetch(`https://api.stackexchange.com/2.3/questions/${qid}/?site=stackoverflow&filter=withbody&key=${process.env.KEY}`);
@@ -105,4 +105,5 @@ async function manageAnswer(id){
     }catch(err){
         console.log("error");
     }
+
 }

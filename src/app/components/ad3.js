@@ -4,7 +4,7 @@ export default function Ad3() {
 	useEffect(()=>{
 		setTimeout(() => {
             loadAll()
-		}, 500);
+		}, 0);
 	},[])
 	return(
 		<div className="ad3"></div>

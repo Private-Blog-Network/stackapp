@@ -4,7 +4,7 @@ export default function Ad2() {
 	useEffect(()=>{
 		setTimeout(() => {
 			loadAll()
-		},500);
+		},0);
 	},[])
 	return(
 		<div className="ad2"></div>

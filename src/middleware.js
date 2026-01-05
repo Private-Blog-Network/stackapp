@@ -176,7 +176,9 @@ export function middleware(req) {
   const url = req.nextUrl.href;
 
   /* ---- LOG URL ---- */
-  console.log("from md :", url);
+  console.log("from md :", url, 
+    'ua:'+ua
+  );
 
   /* ---- Block empty UA ---- */
   if (!ua) {
@@ -206,4 +208,5 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|ad.js).*)"
   ]
 };
+
 

@@ -1,109 +1,122 @@
-import Ans from "../../components/ans"
-import Script from "next/script"
-import stripHtml from "string-strip-html";
-let dt;
-let aid;
-let m;
-let p;
-export async function generateMetadata({params}){
- let at = await gettl(params.answer)
-if(at=='false'){
-return {
-    title:"[SOLVED] "+dt?.qtitle,
-    description:dt?.qtitle+" "+dt?stripHtml(dt.qbody.slice(0,700)).replaceAll(/\n|"|\t|\\|\s|  /g,' '):'',
-    keywords:dt?.qtags.toString()
-}
-}else{
-    return{
-        title:"[SOLVED] "+at?.qtitle,
-        description:at?.qtitle+" "+at?stripHtml(at.qbody.slice(0,700)).replaceAll(/\n|"|\t|\\|\s|  /g,' '):'',
-        keywords:at?.qtags.toString()
-    }
-}
+import Ans from "../../components/ans";
+import Script from "next/script";
+
+export const runtime = "edge";
+
+/* -------------------- CONSTANTS -------------------- */
+const ONE_YEAR = 60 * 60 * 24 * 365;
+
+/* -------------------- EDGE SAFE HTML STRIP -------------------- */
+function cleanText(html = "") {
+  return html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .slice(0, 700)
+    .trim();
 }
 
-function jsonld(){
-    return `
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "[SOLVED] ${dt?.qtitle}",
-        "datePublished": "${new Date(p*1000).toISOString()}",
-        "dateModified": "${new Date(m?m:p*1000).toISOString()}",
-        "publisher": {
-          "@type": "Organization",
-          "name": "CoderApp",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "/code.jpg",
-            "width": 600,
-            "height": 60
-          }
-        },
-        "image": {
-          "@type": "ImageObject",
-          "url": "/code.jpg",
-          "height": 800,
-          "width": 1200
-        },
-        "description": "${dt.qtitle} ${dt?stripHtml(dt.qbody.slice(0,700)).replaceAll(/\n|"|\t|\\|\s|  /g,' '):''}",
-        "url": "/answer/${aid}",
-        "mainEntityOfPage": "/answer/${aid}"
-      }
-      </script>
-    
-    `
-}
+/* -------------------- DATA FETCH -------------------- */
+async function fetchAnswerWithQuestion(answerId) {
+  try {
+    const key = process.env.KEY;
 
-export default async function ans({params}){
-    dt = await  manageAnswer(params.answer);
-    return (
-        <>
-        <div dangerouslySetInnerHTML={{__html:jsonld()}}></div>
-        <Ans id={params.answer} ms={dt}/>
-        </>
-    )
-}
-
-async function gettl(id){
-  try{
-    let ans = await fetch(`https://api.stackexchange.com/2.3/answers/${id}/?site=stackoverflow&filter=withbody&key=${process.env.KEY}`);
-    let resans = await ans.json();
-    let qid = resans.items[0].question_id;
-    let qsn = await fetch(`https://api.stackexchange.com/2.3/questions/${qid}/?site=stackoverflow&filter=withbody&key=${process.env.KEY}`);
-    let resqsn = await qsn.json();
-    let rtn =  {
-        qtitle:resqsn.items[0].title,
-        qbody:resqsn.items[0].body,
-        qtags:resqsn.items[0].tags,
-        abody:resans.items[0].body
-    }
-    return rtn;
-}catch(err){
-    return false;
-}
-}
-async function manageAnswer(id){
-    try{
-        let ans = await fetch(`https://api.stackexchange.com/2.3/answers/${id}/?site=stackoverflow&filter=withbody&key=${process.env.KEY}`);
-        let resans = await ans.json();
-        let qid = resans.items[0].question_id;
-        let qsn = await fetch(`https://api.stackexchange.com/2.3/questions/${qid}/?site=stackoverflow&filter=withbody&key=${process.env.KEY}`);
-        let resqsn = await qsn.json();
-        aid = resans.items[0].answer_id
-        m = resans.items[0].last_edit_date
-        p = resans.items[0].creation_date
-       
-        let rtn =  {
-            qtitle:resqsn.items[0].title,
-            qbody:resqsn.items[0].body,
-            qtags:resqsn.items[0].tags,
-            abody:resans.items[0].body
+    const ansRes = await fetch(
+      `https://api.stackexchange.com/2.3/answers/${answerId}?site=stackoverflow&filter=withbody&key=${key}`,
+      {
+        next: {
+          revalidate: ONE_YEAR,
+          tags: [`answer-${answerId}`]
         }
-        return rtn;
-    }catch(err){
-        console.log("error");
-    }
+      }
+    );
 
+    const ansJson = await ansRes.json();
+    const answer = ansJson?.items?.[0];
+    if (!answer) return null;
+
+    const qRes = await fetch(
+      `https://api.stackexchange.com/2.3/questions/${answer.question_id}?site=stackoverflow&filter=withbody&key=${key}`,
+      {
+        next: {
+          revalidate: ONE_YEAR,
+          tags: [`question-${answer.question_id}`]
+        }
+      }
+    );
+
+    const qJson = await qRes.json();
+    const question = qJson?.items?.[0];
+    if (!question) return null;
+
+    return {
+      aid: answer.answer_id,
+      created: answer.creation_date,
+      modified: answer.last_edit_date ?? answer.creation_date,
+      qtitle: question.title,
+      qbody: question.body,
+      qtags: question.tags,
+      abody: answer.body
+    };
+  } catch {
+    return null;
+  }
+}
+
+/* -------------------- METADATA -------------------- */
+export async function generateMetadata({ params }) {
+  const data = await fetchAnswerWithQuestion(params.answer);
+  if (!data) return {};
+
+  return {
+    title: `[SOLVED] ${data.qtitle}`,
+    description: `${data.qtitle} ${cleanText(data.qbody)}`,
+    keywords: data.qtags.join(", ")
+  };
+}
+
+/* -------------------- PAGE -------------------- */
+export default async function AnswerPage({ params }) {
+  const data = await fetchAnswerWithQuestion(params.answer);
+  if (!data) return null;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `[SOLVED] ${data.qtitle}`,
+    datePublished: new Date(data.created * 1000).toISOString(),
+    dateModified: new Date(data.modified * 1000).toISOString(),
+    publisher: {
+      "@type": "Organization",
+      name: "CoderApp",
+      logo: {
+        "@type": "ImageObject",
+        url: "/code.jpg",
+        width: 600,
+        height: 60
+      }
+    },
+    image: {
+      "@type": "ImageObject",
+      url: "/code.jpg",
+      width: 1200,
+      height: 800
+    },
+    description: `${data.qtitle} ${cleanText(data.qbody)}`,
+    url: `/answer/${data.aid}`,
+    mainEntityOfPage: `/answer/${data.aid}`
+  };
+
+  return (
+    <>
+      <Script
+        id="json-ld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Ans id={params.answer} ms={data} />
+    </>
+  );
 }

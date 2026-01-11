@@ -3,6 +3,7 @@ import Nav from "./components/nav"
 import Script from "next/script"
 import Footer from "./components/footer"
 import Load from "./components/loader"
+export const revalidate = 60 * 60 * 24 * 365;
 export default function Home() {
   return (
     <div>

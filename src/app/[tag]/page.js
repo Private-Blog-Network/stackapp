@@ -3,6 +3,7 @@ import Nav from "../components/nav"
 import Footer from "../components/footer"
 import Load from "../components/loader"
 import Script from 'next/script'
+export const revalidate = 60 * 60 * 24 * 365;
 export function generateMetadata({params}){
     return{
         title:params.tag+"-My Code Helper"

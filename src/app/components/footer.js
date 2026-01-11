@@ -37,171 +37,171 @@ export default function Footer({lk}){
             <i className="fas fa-gem me-3"></i>Some Links
           </h6>
           <p className="text-reset"><Link href='/node.js'>node.js</Link></p>
-<p className="text-reset"><Link href='/express'>express</Link></p>
-<p className="text-reset"><Link href='/npm'>npm</Link></p>
-<p className="text-reset"><Link href='/javascript'>javascript</Link></p>
-<p className="text-reset"><Link href='/mongodb'>mongodb</Link></p>
-<p className="text-reset"><Link href='/reactjs'>reactjs</Link></p>
-<p className="text-reset"><Link href='/angular'>angular</Link></p>
-<p className="text-reset"><Link href='/typescript'>typescript</Link></p>
-<p className="text-reset"><Link href='/socket.io'>socket.io</Link></p>
-<p className="text-reset"><Link href='/webpack'>webpack</Link></p>
-<p className="text-reset"><Link href='/graphql'>graphql</Link></p>
-<p className="text-reset"><Link href='/docker'>docker</Link></p>
-<p className="text-reset"><Link href='/kubernetes'>kubernetes</Link></p>
-<p className="text-reset"><Link href='/jest'>jest</Link></p>
-<p className="text-reset"><Link href='/mocha'>mocha</Link></p>
-<p className="text-reset"><Link href='/chai'>chai</Link></p>
-<p className="text-reset"><Link href='/sequelize.js'>sequelize.js</Link></p>
-<p className="text-reset"><Link href='/loopback'>loopback</Link></p>
-<p className="text-reset"><Link href='/koa'>koa</Link></p>
-<p className="text-reset"><Link href='/node-modules'>node-modules</Link></p>
-<p className="text-reset"><Link href='/node-postgres'>node-postgres</Link></p>
-<p className="text-reset"><Link href='/node-fetch'>node-fetch</Link></p>
-<p className="text-reset"><Link href='/node-inspector'>node-inspector</Link></p>
-<p className="text-reset"><Link href='/node-cron'>node-cron</Link></p>
-<p className="text-reset"><Link href='/pdf'>pdf</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/pdf-reader'>pdf-reader</Link></p>
-<p className="text-reset"><Link href='/pdf.js'>pdf.js</Link></p>
-<p className="text-reset"><Link href='/pdfbox'>pdfbox</Link></p>
-<p className="text-reset"><Link href='/pdfkit'>pdfkit</Link></p>
-<p className="text-reset"><Link href='/pdfsharp'>pdfsharp</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/itext'>itext</Link></p>
-<p className="text-reset"><Link href='/pdf-parser'>pdf-parser</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/pdfbox'>pdfbox</Link></p>
-<p className="text-reset"><Link href='/pdfkit'>pdfkit</Link></p>
-<p className="text-reset"><Link href='/pdfsharp'>pdfsharp</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/pdf-rendering'>pdf-rendering</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/pdfbox'>pdfbox</Link></p>
-<p className="text-reset"><Link href='/pdfkit'>pdfkit</Link></p>
-<p className="text-reset"><Link href='/pdfsharp'>pdfsharp</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/pdf-rendering'>pdf-rendering</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
-<p className="text-reset"><Link href='/pdfbox'>pdfbox</Link></p>
-<p className="text-reset"><Link href='/pdfkit'>pdfkit</Link></p>
-<p className="text-reset"><Link href='/pdfsharp'>pdfsharp</Link></p>
-<p className="text-reset"><Link href='/pdf-generation'>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/express' prefetch={false}>express</Link></p>
+<p className="text-reset"><Link href='/npm' prefetch={false}>npm</Link></p>
+<p className="text-reset"><Link href='/javascript' prefetch={false}>javascript</Link></p>
+<p className="text-reset"><Link href='/mongodb' prefetch={false}>mongodb</Link></p>
+<p className="text-reset"><Link href='/reactjs' prefetch={false}>reactjs</Link></p>
+<p className="text-reset"><Link href='/angular' prefetch={false}>angular</Link></p>
+<p className="text-reset"><Link href='/typescript' prefetch={false}>typescript</Link></p>
+<p className="text-reset"><Link href='/socket.io' prefetch={false}>socket.io</Link></p>
+<p className="text-reset"><Link href='/webpack' prefetch={false}>webpack</Link></p>
+<p className="text-reset"><Link href='/graphql' prefetch={false}>graphql</Link></p>
+<p className="text-reset"><Link href='/docker' prefetch={false}>docker</Link></p>
+<p className="text-reset"><Link href='/kubernetes' prefetch={false}>kubernetes</Link></p>
+<p className="text-reset"><Link href='/jest' prefetch={false}>jest</Link></p>
+<p className="text-reset"><Link href='/mocha' prefetch={false}>mocha</Link></p>
+<p className="text-reset"><Link href='/chai' prefetch={false}>chai</Link></p>
+<p className="text-reset"><Link href='/sequelize.js' prefetch={false}>sequelize.js</Link></p>
+<p className="text-reset"><Link href='/loopback' prefetch={false}>loopback</Link></p>
+<p className="text-reset"><Link href='/koa' prefetch={false}>koa</Link></p>
+<p className="text-reset"><Link href='/node-modules' prefetch={false}>node-modules</Link></p>
+<p className="text-reset"><Link href='/node-postgres' prefetch={false}>node-postgres</Link></p>
+<p className="text-reset"><Link href='/node-fetch' prefetch={false}>node-fetch</Link></p>
+<p className="text-reset"><Link href='/node-inspector' prefetch={false}>node-inspector</Link></p>
+<p className="text-reset"><Link href='/node-cron' prefetch={false}>node-cron</Link></p>
+<p className="text-reset"><Link href='/pdf' prefetch={false}>pdf</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/pdf-reader' prefetch={false}>pdf-reader</Link></p>
+<p className="text-reset"><Link href='/pdf.js' prefetch={false}>pdf.js</Link></p>
+<p className="text-reset"><Link href='/pdfbox' prefetch={false}>pdfbox</Link></p>
+<p className="text-reset"><Link href='/pdfkit' prefetch={false}>pdfkit</Link></p>
+<p className="text-reset"><Link href='/pdfsharp' prefetch={false}>pdfsharp</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/itext' prefetch={false}> itext</Link></p>
+<p className="text-reset"><Link href='/pdf-parser' prefetch={false}>pdf-parser</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/pdfbox' prefetch={false}>pdfbox</Link></p>
+<p className="text-reset"><Link href='/pdfkit' prefetch={false}>pdfkit</Link></p>
+<p className="text-reset"><Link href='/pdfsharp' prefetch={false}>pdfsharp</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/pdf-rendering' prefetch={false}>pdf-rendering</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/pdfbox' prefetch={false}>pdfbox</Link></p>
+<p className="text-reset"><Link href='/pdfkit' prefetch={false}>pdfkit</Link></p>
+<p className="text-reset"><Link href='/pdfsharp' prefetch={false}>pdfsharp</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/pdf-rendering' prefetch={false}>pdf-rendering</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
+<p className="text-reset"><Link href='/pdfbox' prefetch={false}>pdfbox</Link></p>
+<p className="text-reset"><Link href='/pdfkit' prefetch={false}>pdfkit</Link></p>
+<p className="text-reset"><Link href='/pdfsharp' prefetch={false}>pdfsharp</Link></p>
+<p className="text-reset"><Link href='/pdf-generation' prefetch={false}>pdf-generation</Link></p>
 
         </div>
         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <h6 className="text-uppercase fw-bold mb-4">
             PYTHON Links
           </h6>
-          <p className="text-reset"><Link href='/python'>python</Link></p>
-<p className="text-reset"><Link href='/python-3.x'>python-3.x</Link></p>
-<p className="text-reset"><Link href='/django'>django</Link></p>
-<p className="text-reset"><Link href='/flask'>flask</Link></p>
-<p className="text-reset"><Link href='/numpy'>numpy</Link></p>
-<p className="text-reset"><Link href='/pandas'>pandas</Link></p>
-<p className="text-reset"><Link href='/matplotlib'>matplotlib</Link></p>
-<p className="text-reset"><Link href='/tensorflow'>tensorflow</Link></p>
-<p className="text-reset"><Link href='/keras'>keras</Link></p>
-<p className="text-reset"><Link href='/scipy'>scipy</Link></p>
-<p className="text-reset"><Link href='/selenium'>selenium</Link></p>
-<p className="text-reset"><Link href='/beautifulsoup'>beautifulsoup</Link></p>
-<p className="text-reset"><Link href='/flask-sqlalchemy'>flask-sqlalchemy</Link></p>
-<p className="text-reset"><Link href='/django-rest-framework'>django-rest-framework</Link></p>
-<p className="text-reset"><Link href='/python-requests'>python-requests</Link></p>
-<p className="text-reset"><Link href='/pytorch'>pytorch</Link></p>
-<p className="text-reset"><Link href='/django-models'>django-models</Link></p>
-<p className="text-reset"><Link href='/python-import'>python-import</Link></p>
-<p className="text-reset"><Link href='/python-asyncio'>python-asyncio</Link></p>
-<p className="text-reset"><Link href='/python-decorators'>python-decorators</Link></p>
-<p className="text-reset"><Link href='/python-generators'>python-generators</Link></p>
-<p className="text-reset"><Link href='/python-requests'>python-requests</Link></p>
-<p className="text-reset"><Link href='/python-multithreading'>python-multithreading</Link></p>
-<p className="text-reset"><Link href='/python-logging'>python-logging</Link></p>
+          <p className="text-reset"><Link href='/python' prefetch={false}>python</Link></p>
+<p className="text-reset"><Link href='/python-3.x'prefetch={false}>python-3.x</Link></p>
+<p className="text-reset"><Link href='/django'prefetch={false}>django</Link></p>
+<p className="text-reset"><Link href='/flask'prefetch={false}>flask</Link></p>
+<p className="text-reset"><Link href='/numpy'prefetch={false}>numpy</Link></p>
+<p className="text-reset"><Link href='/pandas'prefetch={false}>pandas</Link></p>
+<p className="text-reset"><Link href='/matplotlib'prefetch={false}>matplotlib</Link></p>
+<p className="text-reset"><Link href='/tensorflow'prefetch={false}>tensorflow</Link></p>
+<p className="text-reset"><Link href='/keras'prefetch={false}>keras</Link></p>
+<p className="text-reset"><Link href='/scipy'prefetch={false}>scipy</Link></p>
+<p className="text-reset"><Link href='/selenium'prefetch={false}>selenium</Link></p>
+<p className="text-reset"><Link href='/beautifulsoup'prefetch={false}>beautifulsoup</Link></p>
+<p className="text-reset"><Link href='/flask-sqlalchemy'prefetch={false}>flask-sqlalchemy</Link></p>
+<p className="text-reset"><Link href='/django-rest-framework'prefetch={false}>django-rest-framework</Link></p>
+<p className="text-reset"><Link href='/python-requests'prefetch={false}>python-requests</Link></p>
+<p className="text-reset"><Link href='/pytorch'prefetch={false}>pytorch</Link></p>
+<p className="text-reset"><Link href='/django-models'prefetch={false}>django-models</Link></p>
+<p className="text-reset"><Link href='/python-import'prefetch={false}>python-import</Link></p>
+<p className="text-reset"><Link href='/python-asyncio'prefetch={false}>python-asyncio</Link></p>
+<p className="text-reset"><Link href='/python-decorators'prefetch={false}>python-decorators</Link></p>
+<p className="text-reset"><Link href='/python-generators'prefetch={false}>python-generators</Link></p>
+<p className="text-reset"><Link href='/python-requests'prefetch={false}>python-requests</Link></p>
+<p className="text-reset"><Link href='/python-multithreading'prefetch={false}>python-multithreading</Link></p>
+<p className="text-reset"><Link href='/python-logging'prefetch={false}>python-logging</Link></p>
 
         </div>
         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <h6 className="text-uppercase fw-bold mb-4">
             Useful links
           </h6>
-<p className="text-reset"><Link href='/google-analytics'>google-analytics</Link></p>
-<p className="text-reset"><Link href='/google-cloud-platform'>google-cloud-platform</Link></p>
-<p className="text-reset"><Link href='/google-apps-script'>google-apps-script</Link></p>
-<p className="text-reset"><Link href='/google-drive-api'>google-drive-api</Link></p>
-<p className="text-reset"><Link href='/google-chrome-extension'>google-chrome-extension</Link></p>
-<p className="text-reset"><Link href='/android'>android</Link></p>
-<p className="text-reset"><Link href='/firebase'>firebase</Link></p>
-<p className="text-reset"><Link href='/google-cloud-firestore'>google-cloud-firestore</Link></p>
-<p className="text-reset"><Link href='/google-cloud-functions'>google-cloud-functions</Link></p>
-<p className="text-reset"><Link href='/google-cloud-storage'>google-cloud-storage</Link></p>
-<p className="text-reset"><Link href='/google-bigquery'>google-bigquery</Link></p>
-<p className="text-reset"><Link href='/google-sheets'>google-sheets</Link></p>
-<p className="text-reset"><Link href='/google-calendar-api'>google-calendar-api</Link></p>
-<p className="text-reset"><Link href='/google-visualization'>google-visualization</Link></p>
-<p className="text-reset"><Link href='/google-oauth'>google-oauth</Link></p>
-<p className="text-reset"><Link href='/google-plus'>google-plus</Link></p>
-<p className="text-reset"><Link href='/google-search'>google-search</Link></p>
-<p className="text-reset"><Link href='/google-tag-manager'>google-tag-manager</Link></p>
-<p className="text-reset"><Link href='/google-app-engine'>google-app-engine</Link></p>
-<p className="text-reset"><Link href='/google-apps-script'>google-apps-script</Link></p>
-<p className="text-reset"><Link href='/google-apps-script-web-app'>google-apps-script-web-app</Link></p>
-<p className="text-reset"><Link href='/google-sheets'>google-sheets</Link></p>
-<p className="text-reset"><Link href='/google-docs'>google-docs</Link></p>
-<p className="text-reset"><Link href='/google-drive-api'>google-drive-api</Link></p>
-<p className="text-reset"><Link href='/google-calendar-api'>google-calendar-api</Link></p>
-<p className="text-reset"><Link href='/google-apps-script-gmail'>google-apps-script-gmail</Link></p>
-<p className="text-reset"><Link href='/google-form'>google-form</Link></p>
-<p className="text-reset"><Link href='/google-app-maker'>google-app-maker</Link></p>
+<p className="text-reset"><Link href='/google-analytics'prefetch={false}>google-analytics</Link></p>
+<p className="text-reset"><Link href='/google-cloud-platform'prefetch={false}>google-cloud-platform</Link></p>
+<p className="text-reset"><Link href='/google-apps-script'prefetch={false}>google-apps-script</Link></p>
+<p className="text-reset"><Link href='/google-drive-api'prefetch={false}>google-drive-api</Link></p>
+<p className="text-reset"><Link href='/google-chrome-extension'prefetch={false}>google-chrome-extension</Link></p>
+<p className="text-reset"><Link href='/android'prefetch={false}>android</Link></p>
+<p className="text-reset"><Link href='/firebase'prefetch={false}>firebase</Link></p>
+<p className="text-reset"><Link href='/google-cloud-firestore'prefetch={false}>google-cloud-firestore</Link></p>
+<p className="text-reset"><Link href='/google-cloud-functions'prefetch={false}>google-cloud-functions</Link></p>
+<p className="text-reset"><Link href='/google-cloud-storage'prefetch={false}>google-cloud-storage</Link></p>
+<p className="text-reset"><Link href='/google-bigquery'prefetch={false}>google-bigquery</Link></p>
+<p className="text-reset"><Link href='/google-sheets'prefetch={false}>google-sheets</Link></p>
+<p className="text-reset"><Link href='/google-calendar-api'prefetch={false}>google-calendar-api</Link></p>
+<p className="text-reset"><Link href='/google-visualization'prefetch={false}>google-visualization</Link></p>
+<p className="text-reset"><Link href='/google-oauth'prefetch={false}>google-oauth</Link></p>
+<p className="text-reset"><Link href='/google-plus'prefetch={false}>google-plus</Link></p>
+<p className="text-reset"><Link href='/google-search'prefetch={false}>google-search</Link></p>
+<p className="text-reset"><Link href='/google-tag-manager'prefetch={false}>google-tag-manager</Link></p>
+<p className="text-reset"><Link href='/google-app-engine'prefetch={false}>google-app-engine</Link></p>
+<p className="text-reset"><Link href='/google-apps-script'prefetch={false}>google-apps-script</Link></p>
+<p className="text-reset"><Link href='/google-apps-script-web-app'prefetch={false}>google-apps-script-web-app</Link></p>
+<p className="text-reset"><Link href='/google-sheets'prefetch={false}>google-sheets</Link></p>
+<p className="text-reset"><Link href='/google-docs'prefetch={false}>google-docs</Link></p>
+<p className="text-reset"><Link href='/google-drive-api'prefetch={false}>google-drive-api</Link></p>
+<p className="text-reset"><Link href='/google-calendar-api'prefetch={false}>google-calendar-api</Link></p>
+<p className="text-reset"><Link href='/google-apps-script-gmail'prefetch={false}>google-apps-script-gmail</Link></p>
+<p className="text-reset"><Link href='/google-form'prefetch={false}>google-form</Link></p>
+<p className="text-reset"><Link href='/google-app-maker'prefetch={false}>google-app-maker</Link></p>
 
 
 
         </div>
         <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <h6 className="text-uppercase fw-bold mb-4">More Links</h6>
-          <p className="text-reset"><Link href='/ios'>ios</Link></p>
-<p className="text-reset"><Link href='/swift'>swift</Link></p>
-<p className="text-reset"><Link href='/objective-c'>objective-c</Link></p>
-<p className="text-reset"><Link href='/xcode'>xcode</Link></p>
-<p className="text-reset"><Link href='/iphone'>iphone</Link></p>
-<p className="text-reset"><Link href='/ios-app-extension'>ios-app-extension</Link></p>
-<p className="text-reset"><Link href='/ios-simulator'>ios-simulator</Link></p>
-<p className="text-reset"><Link href='/core-data'>core-data</Link></p>
-<p className="text-reset"><Link href='/cocoa-touch'>cocoa-touch</Link></p>
-<p className="text-reset"><Link href='/uikit'>uikit</Link></p>
-<p className="text-reset"><Link href='/cocoa'>cocoa</Link></p>
-<p className="text-reset"><Link href='/ios5'>ios5</Link></p>
-<p className="text-reset"><Link href='/ios6'>ios6</Link></p>
-<p className="text-reset"><Link href='/ios7'>ios7</Link></p>
-<p className="text-reset"><Link href='/docker'>docker</Link></p>
-<p className="text-reset"><Link href='/docker-compose'>docker-compose</Link></p>
-<p className="text-reset"><Link href='/dockerfile'>dockerfile</Link></p>
-<p className="text-reset"><Link href='/docker-swarm'>docker-swarm</Link></p>
-<p className="text-reset"><Link href='/docker-machine'>docker-machine</Link></p>
-<p className="text-reset"><Link href='/docker-for-windows'>docker-for-windows</Link></p>
-<p className="text-reset"><Link href='/docker-for-mac'>docker-for-mac</Link></p>
-<p className="text-reset"><Link href='/dockerhub'>dockerhub</Link></p>
-<p className="text-reset"><Link href='/docker-registry'>docker-registry</Link></p>
-<p className="text-reset"><Link href='/docker-api'>docker-api</Link></p>
-<p className="text-reset"><Link href='/docker-networking'>docker-networking</Link></p>
-<p className="text-reset"><Link href='/docker-volume'>docker-volume</Link></p>
-<p className="text-reset"><Link href='/docker-compose'>docker-compose</Link></p>
-<p className="text-reset"><Link href='/docker-stack'>docker-stack</Link></p>
-<p className="text-reset"><Link href='/docker-machine'>docker-machine</Link></p>
-<p className="text-reset"><Link href='/docker-desktop'>docker-desktop</Link></p>
-<p className="text-reset"><Link href='/docker-swarm'>docker-swarm</Link></p>
-<p className="text-reset"><Link href='/docker-cloud'>docker-cloud</Link></p>
-<p className="text-reset"><Link href='/docker-image'>docker-image</Link></p>
-<p className="text-reset"><Link href='/docker-exec'>docker-exec</Link></p>
-<p className="text-reset"><Link href='/docker-build'>docker-build</Link></p>
-<p className="text-reset"><Link href='/docker-machine'>docker-machine</Link></p>
-<p className="text-reset"><Link href='/docker-container'>docker-container</Link></p>
-<p className="text-reset"><Link href='/docker-compose'>docker-compose</Link></p>
-<p className="text-reset"><Link href='/docker-network'>docker-network</Link></p>
-<p className="text-reset"><Link href='/docker-swarm'>docker-swarm</Link></p>
-<p className="text-reset"><Link href='/docker-compose-file'>docker-compose-file</Link></p>
-<p className="text-reset"><Link href='/docker-windows'>docker-windows</Link></p>
+          <p className="text-reset"><Link href='/ios'prefetch={false}>ios</Link></p>
+<p className="text-reset"><Link href='/swift'prefetch={false}>swift</Link></p>
+<p className="text-reset"><Link href='/objective-c'prefetch={false}>objective-c</Link></p>
+<p className="text-reset"><Link href='/xcode'prefetch={false}>xcode</Link></p>
+<p className="text-reset"><Link href='/iphone'prefetch={false}>iphone</Link></p>
+<p className="text-reset"><Link href='/ios-app-extension'prefetch={false}>ios-app-extension</Link></p>
+<p className="text-reset"><Link href='/ios-simulator'prefetch={false}>ios-simulator</Link></p>
+<p className="text-reset"><Link href='/core-data'prefetch={false}>core-data</Link></p>
+<p className="text-reset"><Link href='/cocoa-touch'prefetch={false}>cocoa-touch</Link></p>
+<p className="text-reset"><Link href='/uikit'prefetch={false}>uikit</Link></p>
+<p className="text-reset"><Link href='/cocoa'prefetch={false}>cocoa</Link></p>
+<p className="text-reset"><Link href='/ios5'prefetch={false}>ios5</Link></p>
+<p className="text-reset"><Link href='/ios6'prefetch={false}>ios6</Link></p>
+<p className="text-reset"><Link href='/ios7'prefetch={false}>ios7</Link></p>
+<p className="text-reset"><Link href='/docker'prefetch={false}>docker</Link></p>
+<p className="text-reset"><Link href='/docker-compose'prefetch={false}>docker-compose</Link></p>
+<p className="text-reset"><Link href='/dockerfile'prefetch={false}>dockerfile</Link></p>
+<p className="text-reset"><Link href='/docker-swarm'prefetch={false}>docker-swarm</Link></p>
+<p className="text-reset"><Link href='/docker-machine'prefetch={false}>docker-machine</Link></p>
+<p className="text-reset"><Link href='/docker-for-windows'prefetch={false}>docker-for-windows</Link></p>
+<p className="text-reset"><Link href='/docker-for-mac'prefetch={false}>docker-for-mac</Link></p>
+<p className="text-reset"><Link href='/dockerhub'prefetch={false}>dockerhub</Link></p>
+<p className="text-reset"><Link href='/docker-registry'prefetch={false}>docker-registry</Link></p>
+<p className="text-reset"><Link href='/docker-api'prefetch={false}>docker-api</Link></p>
+<p className="text-reset"><Link href='/docker-networking'prefetch={false}>docker-networking</Link></p>
+<p className="text-reset"><Link href='/docker-volume'prefetch={false}>docker-volume</Link></p>
+<p className="text-reset"><Link href='/docker-compose'prefetch={false}>docker-compose</Link></p>
+<p className="text-reset"><Link href='/docker-stack'prefetch={false}>docker-stack</Link></p>
+<p className="text-reset"><Link href='/docker-machine'prefetch={false}>docker-machine</Link></p>
+<p className="text-reset"><Link href='/docker-desktop'prefetch={false}>docker-desktop</Link></p>
+<p className="text-reset"><Link href='/docker-swarm'prefetch={false}>docker-swarm</Link></p>
+<p className="text-reset"><Link href='/docker-cloud'prefetch={false}>docker-cloud</Link></p>
+<p className="text-reset"><Link href='/docker-image'prefetch={false}>docker-image</Link></p>
+<p className="text-reset"><Link href='/docker-exec'prefetch={false}>docker-exec</Link></p>
+<p className="text-reset"><Link href='/docker-build'prefetch={false}>docker-build</Link></p>
+<p className="text-reset"><Link href='/docker-machine'prefetch={false}>docker-machine</Link></p>
+<p className="text-reset"><Link href='/docker-container'prefetch={false}>docker-container</Link></p>
+<p className="text-reset"><Link href='/docker-compose'prefetch={false}>docker-compose</Link></p>
+<p className="text-reset"><Link href='/docker-network'prefetch={false}>docker-network</Link></p>
+<p className="text-reset"><Link href='/docker-swarm'prefetch={false}>docker-swarm</Link></p>
+<p className="text-reset"><Link href='/docker-compose-file'prefetch={false}>docker-compose-file</Link></p>
+<p className="text-reset"><Link href='/docker-windows'prefetch={false}>docker-windows</Link></p>
 
-<p className="text-reset"><Link href='/ios-appstore'>ios-appstore</Link></p>
-<p className="text-reset"><Link href='/ios-ui-automation'>ios-ui-automation</Link></p>
+<p className="text-reset"><Link href='/ios-appstore'prefetch={false}>ios-appstore</Link></p>
+<p className="text-reset"><Link href='/ios-ui-automation'prefetch={false}>ios-ui-automation</Link></p>
 
         </div>
       </div>
@@ -209,8 +209,8 @@ export default function Footer({lk}){
   </section>
   <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
     {new Date().toLocaleString()}<br/>
-    {lk?<Link href="https://codewithsundeep.com" target="_blank">Project Created By : Codewithsundeep</Link>:''}<br/>
-    Content Source : <Link href="https://stackoverflow.com/" target="_blank">Stackoverflow</Link>
+    {lk?<Link href="https://youtube.com/codewithsundeep" target="_blank" prefetch={false}>Project Created By : Codewithsundeep</Link>:''}<br/>
+    Content Source : <Link href="https://stackoverflow.com/" target="_blank" prefetch={false}>Stackoverflow</Link>
   </div>
 </footer>
         </>

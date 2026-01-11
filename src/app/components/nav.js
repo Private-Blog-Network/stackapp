@@ -8,7 +8,7 @@ return (
 <Script id="ads" src="/ad.js"></Script>
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
-    <Link className="navbar-brand" href={props.page=='page'?`../`:'.'}>My Code Helper</Link>
+    <Link className="navbar-brand" href={props.page=='page'?`../`:'.'} prefetch={false}>My Code Helper</Link>
     <button
       className="navbar-toggler"
       type="button"
@@ -25,7 +25,7 @@ return (
         {
             pls.obj.map((e,i)=>(
         <li className="nav-item" key={i}>
-          <Link className="nav-link active" aria-current="page" href={props.page=='page'?`../${e.toLowerCase()}`:"/"+e.toLowerCase()}>{e}</Link>
+          <Link className="nav-link active" aria-current="page" href={props.page=='page'?`../${e.toLowerCase()}`:"/"+e.toLowerCase()} prefetch={false}>{e}</Link>
         </li>
             ))
         }

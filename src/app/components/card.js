@@ -49,6 +49,7 @@ export default async function Card(props) {
                     key={idx}
                     href={`/${tag}`}
                     className="badge badge-primary m-1"
+                    prefetch={false}
                   >
                     {tag}
                   </Link>
@@ -61,6 +62,7 @@ export default async function Card(props) {
               <Link
                 href={`/answer/${e.accepted_answer_id}`}
                 className="btn btn-primary rounded-pill mt-2 mb-2"
+                prefetch={false}
               >
                 Read More
               </Link>

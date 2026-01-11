@@ -5,7 +5,7 @@ export const runtime = "edge";
 
 /* -------------------- CONSTANTS -------------------- */
 const ONE_YEAR = 60 * 60 * 24 * 365;
-
+export const revalidate = ONE_YEAR;
 /* -------------------- EDGE SAFE HTML STRIP -------------------- */
 function cleanText(html = "") {
   return html

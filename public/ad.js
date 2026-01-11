@@ -2,7 +2,7 @@ function loadAds(){
     return new Promise(res=>{
     let scp = document.createElement("script")
     let scp1 = document.createElement("script")
-    scp1.src="//collectbladders.com/286dc2d72d046f16b7c43cfa6ee77ccc/invoke.js"
+    scp1.src="https://www.highperformanceformat.com/286dc2d72d046f16b7c43cfa6ee77ccc/invoke.js"
     scp.innerHTML=`
 	atOptions = {
 		'key' : '286dc2d72d046f16b7c43cfa6ee77ccc',
@@ -28,7 +28,7 @@ function loadAds1(){
     return new Promise(res=>{
     let scp = document.createElement("script")
     let scp1 = document.createElement("script")
-    scp1.src="//collectbladders.com/02034458a3beeb36c2a9ce06e28f6641/invoke.js"
+    scp1.src="https://www.highperformanceformat.com/02034458a3beeb36c2a9ce06e28f6641/invoke.js"
     scp.innerHTML=`
     atOptions = {
 		'key' : '02034458a3beeb36c2a9ce06e28f6641',
@@ -53,7 +53,7 @@ function loadAds3(){
     return new Promise(res=>{
     let scp = document.createElement("script")
     let scp1 = document.createElement("script")
-    scp1.src="//collectbladders.com/bb7e3041fbe20d7620164eb20a6c46ec/invoke.js"
+    scp1.src="https://www.highperformanceformat.com/bb7e3041fbe20d7620164eb20a6c46ec/invoke.js"
     scp.innerHTML=`
     atOptions = {
 		'key' : 'bb7e3041fbe20d7620164eb20a6c46ec',
@@ -79,7 +79,7 @@ function loadAds4(){
     return new Promise(res=>{
     let scp = document.createElement("script")
     let scp1 = document.createElement("script")
-    scp1.src="//collectbladders.com/77c8895075b148ec327619ee2e12568c/invoke.js"
+    scp1.src="https://www.highperformanceformat.com/77c8895075b148ec327619ee2e12568c/invoke.js"
     scp.innerHTML=`
     atOptions = {
 		'key' : '77c8895075b148ec327619ee2e12568c',

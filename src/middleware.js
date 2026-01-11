@@ -18,7 +18,7 @@ const bannedIPs = g.__bannedIPs;
 
 /* ================= ALLOWLISTS ================= */
 
-/* ---- SEARCH ENGINES ---- */
+/* ---- SEARCH ENGINES / SOCIAL ---- */
 const GOOD_BOTS = [
   "googlebot",
   "adsbot-google",
@@ -107,6 +107,38 @@ const DEFINITE_BAD = [
   "claudebot",
 ];
 
+/* ---- FAKE / IMPOSSIBLE BROWSER SIGNATURES ---- */
+const FAKE_BROWSERS = [
+  /chrome\/([0-5][0-9])\./,      // Chrome < 60
+  /chrome\/\d+\.0\.0\.0/,        // Fake Chrome template
+  /chrome\/44\.0\.4649/,         // Known fake Nexus UA
+  /chrome\/0\./,
+
+  /firefox\/[0-4][0-9]\./,       // Firefox < 50
+  /safari\/0/,
+  /version\/0/,
+
+  /android 4\./,
+  /android 5\./,
+
+  /headless/,
+  /phantom/,
+  /slimer/,
+
+  /genymotion/,
+  /bluestacks/,
+  /nox/,
+  /memu/,
+  /ldplayer/,
+
+  /okhttp/,
+  /dalvik/,
+  /apache-httpclient/,
+
+  /mozilla\/5\.0$/,
+  /mozilla\/4\.0/,
+];
+
 /* ================= UTILS ================= */
 
 function ban(ip) {
@@ -123,6 +155,26 @@ function isBanned(ip) {
   return true;
 }
 
+function isFakeBrowserUA(ua) {
+  const hasBrowser =
+    ua.includes("chrome/") ||
+    ua.includes("firefox/") ||
+    ua.includes("safari/") ||
+    ua.includes("edg/");
+
+  if (!hasBrowser) return true;
+
+  const chrome = ua.match(/chrome\/(\d+)/);
+  if (chrome && Number(chrome[1]) < 70) return true;
+
+  const ff = ua.match(/firefox\/(\d+)/);
+  if (ff && Number(ff[1]) < 80) return true;
+
+  if (ua.includes("safari") && !ua.includes("version/")) return true;
+
+  return false;
+}
+
 /* ================= MIDDLEWARE ================= */
 
 export function middleware(req) {
@@ -132,6 +184,7 @@ export function middleware(req) {
     "unknown";
 
   const ua = (req.headers.get("user-agent") || "").toLowerCase();
+  console.log(ua)
   const path = req.nextUrl.pathname;
   const now = Date.now();
 
@@ -156,6 +209,12 @@ export function middleware(req) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
+  /* ---- FAKE BROWSER CHECK ---- */
+  if (FAKE_BROWSERS.some(rx => rx.test(ua)) || isFakeBrowserUA(ua)) {
+    ban(ip);
+    return new NextResponse("Forbidden", { status: 403 });
+  }
+
   /* ================= RATE LIMIT ================= */
 
   let hit = ipHits.get(ip);
@@ -175,20 +234,15 @@ export function middleware(req) {
     return new NextResponse("Too Many Requests", { status: 429 });
   }
 
-  /* ================= SPOOF DETECTION ================= */
-
-  const accept = req.headers.get("accept");
-  const lang = req.headers.get("accept-language");
-  const encoding = req.headers.get("accept-encoding");
-  const cookies = req.headers.get("cookie");
+  /* ================= BEHAVIOR / SPOOF CHECK ================= */
 
   let suspicion = 0;
 
-  if (!accept) suspicion++;
-  if (!lang) suspicion++;
-  if (!encoding) suspicion++;
+  if (!req.headers.get("accept")) suspicion++;
+  if (!req.headers.get("accept-language")) suspicion++;
+  if (!req.headers.get("accept-encoding")) suspicion++;
 
-  if (!cookies && path.startsWith("/answer")) suspicion++;
+  if (!req.headers.get("cookie") && path.startsWith("/answer")) suspicion++;
   if (path === "/robots.txt") suspicion += 2;
 
   if (suspicion >= 4) {

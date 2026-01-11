@@ -109,17 +109,10 @@ const DEFINITE_BAD = [
 
 /* ---- FAKE / IMPOSSIBLE BROWSER SIGNATURES ---- */
 const FAKE_BROWSERS = [
-  /chrome\/([0-5][0-9])\./,      // Chrome < 60
-  /chrome\/\d+\.0\.0\.0/,        // Fake Chrome template
-  /chrome\/44\.0\.4649/,         // Known fake Nexus UA
   /chrome\/0\./,
-
-  /firefox\/[0-4][0-9]\./,       // Firefox < 50
+  /chrome\/44\.0\.4649/,   // known fake
+  /firefox\/0\./,
   /safari\/0/,
-  /version\/0/,
-
-  /android 4\./,
-  /android 5\./,
 
   /headless/,
   /phantom/,
@@ -134,9 +127,6 @@ const FAKE_BROWSERS = [
   /okhttp/,
   /dalvik/,
   /apache-httpclient/,
-
-  /mozilla\/5\.0$/,
-  /mozilla\/4\.0/,
 ];
 
 /* ================= UTILS ================= */
@@ -156,24 +146,30 @@ function isBanned(ip) {
 }
 
 function isFakeBrowserUA(ua) {
-  const hasBrowser =
-    ua.includes("chrome/") ||
-    ua.includes("firefox/") ||
-    ua.includes("safari/") ||
-    ua.includes("edg/");
+  // Must contain a real browser token
+  const isChrome = ua.includes("chrome/");
+  const isFirefox = ua.includes("firefox/");
+  const isEdge = ua.includes("edg/");
+  const isSafari = ua.includes("safari") && !isChrome && !isEdge;
 
-  if (!hasBrowser) return true;
+  if (!isChrome && !isFirefox && !isSafari && !isEdge) {
+    return true;
+  }
 
+  // Chrome sanity (allow older real devices)
   const chrome = ua.match(/chrome\/(\d+)/);
-  if (chrome && Number(chrome[1]) < 70) return true;
+  if (chrome && Number(chrome[1]) < 50) return true;
 
+  // Firefox sanity
   const ff = ua.match(/firefox\/(\d+)/);
-  if (ff && Number(ff[1]) < 80) return true;
+  if (ff && Number(ff[1]) < 50) return true;
 
-  if (ua.includes("safari") && !ua.includes("version/")) return true;
+  // Safari sanity (ONLY real Safari)
+  if (isSafari && !ua.includes("version/")) return true;
 
   return false;
 }
+
 
 /* ================= MIDDLEWARE ================= */
 

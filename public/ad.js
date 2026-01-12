@@ -1,118 +1,93 @@
-function loadAds(){
-    return new Promise(res=>{
-    let scp = document.createElement("script")
-    let scp1 = document.createElement("script")
-    scp1.src="https://www.highperformanceformat.com/286dc2d72d046f16b7c43cfa6ee77ccc/invoke.js"
-    scp.innerHTML=`
-	atOptions = {
-		'key' : '286dc2d72d046f16b7c43cfa6ee77ccc',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-    `;
-    document.querySelector(".ad1").appendChild(scp)
-    document.querySelector(".ad1").appendChild(scp1)
-    scp.onload=()=>{
-        // 
-    }
-    scp1.onload=()=>{
-        console.log("loaded");
-    }
-    
-})
-}
+/* =====================================================
+   HUMAN-ONLY SEO-SAFE AD LOADER (SINGLE FUNCTION)
+===================================================== */
 
-function loadAds1(){
-    return new Promise(res=>{
-    let scp = document.createElement("script")
-    let scp1 = document.createElement("script")
-    scp1.src="https://www.highperformanceformat.com/02034458a3beeb36c2a9ce06e28f6641/invoke.js"
-    scp.innerHTML=`
-    atOptions = {
-		'key' : '02034458a3beeb36c2a9ce06e28f6641',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-    `;
-    document.querySelector(".ad2").appendChild(scp)
-    document.querySelector(".ad2").appendChild(scp1)
-    scp.onload=()=>{
-    //    
-    }
-    scp1.onload=()=>{
-        console.log("loaded1");
-    }
-    
-})
-}
-function loadAds3(){
-    return new Promise(res=>{
-    let scp = document.createElement("script")
-    let scp1 = document.createElement("script")
-    scp1.src="https://www.highperformanceformat.com/bb7e3041fbe20d7620164eb20a6c46ec/invoke.js"
-    scp.innerHTML=`
-    atOptions = {
-		'key' : 'bb7e3041fbe20d7620164eb20a6c46ec',
-		'format' : 'iframe',
-		'height' : 300,
-		'width' : 160,
-		'params' : {}
-	};
-    `;
-    document.querySelector(".ad3").appendChild(scp)
-    document.querySelector(".ad3").appendChild(scp1)
-    scp.onload=()=>{
-        // 
-    }
-    scp1.onload=()=>{
-        console.log("loaded3");
-    }
-    
-})
-}
+function loadAll() {
+  /* ---------- BOT EXIT ---------- */
+  const ua = navigator.userAgent.toLowerCase();
+  const bots = [
+    "googlebot","adsbot-google","mediapartners-google",
+    "bingbot","duckduckbot","baiduspider","yandex",
+    "applebot","petalbot","facebookexternalhit",
+    "twitterbot","linkedinbot","whatsapp","telegrambot",
+    "bot","crawler","spider","scrape","headless",
+    "phantom","puppeteer","playwright","selenium",
+    "curl","wget"
+  ];
+  if (bots.some(b => ua.includes(b))) return;
 
-function loadAds4(){
-    return new Promise(res=>{
-    let scp = document.createElement("script")
-    let scp1 = document.createElement("script")
-    scp1.src="https://www.highperformanceformat.com/77c8895075b148ec327619ee2e12568c/invoke.js"
-    scp.innerHTML=`
-    atOptions = {
-		'key' : '77c8895075b148ec327619ee2e12568c',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-    `;
-    document.querySelector(".ad4").appendChild(scp)
-    document.querySelector(".ad4").appendChild(scp1)
-    scp.onload=()=>{
-        // 
-    }
-    scp1.onload=()=>{
-        console.log("loaded4");
-    }
-    
-})
-}
+  /* ---------- RUN ONLY ONCE ---------- */
+  if (window.__adsLoaded) return;
+  window.__adsLoaded = true;
 
-function loadAll(){
-    loadAds()
-let ar = [loadAds1,loadAds3,loadAds4]
-setTimeout(()=>{
-    loadAds1()
-    setTimeout(()=>{
-        loadAds3()
-        setTimeout(()=>{
-            setTimeout(()=>{
-        loadAds4()
-    } ,0)
-        } ,0)
-    } ,0)
-} ,0)
+  /* ---------- HELPERS ---------- */
+  const delay = ms => new Promise(r => setTimeout(r, ms));
+
+  function inject(containerSelector, options, src) {
+    return new Promise(resolve => {
+      const box = document.querySelector(containerSelector);
+      if (!box || box.dataset.loaded) return resolve();
+      box.dataset.loaded = "1";
+
+      const s1 = document.createElement("script");
+      s1.innerHTML = `atOptions = ${JSON.stringify(options)};`;
+
+      const s2 = document.createElement("script");
+      s2.src = src;
+      s2.async = true;
+      s2.onload = resolve;
+      s2.onerror = resolve;
+
+      box.appendChild(s1);
+      box.appendChild(s2);
+    });
+  }
+
+  /* ---------- SEQUENTIAL ADS ---------- */
+  (async () => {
+    await delay(1000);
+    await inject(".ad1",
+      { key:"286dc2d72d046f16b7c43cfa6ee77ccc", format:"iframe", height:250, width:300, params:{} },
+      "https://www.highperformanceformat.com/286dc2d72d046f16b7c43cfa6ee77ccc/invoke.js"
+    );
+
+    await delay(1000);
+    await inject(".ad2",
+      { key:"02034458a3beeb36c2a9ce06e28f6641", format:"iframe", height:60, width:468, params:{} },
+      "https://www.highperformanceformat.com/02034458a3beeb36c2a9ce06e28f6641/invoke.js"
+    );
+
+    await delay(1000);
+    await inject(".ad3",
+      { key:"bb7e3041fbe20d7620164eb20a6c46ec", format:"iframe", height:300, width:160, params:{} },
+      "https://www.highperformanceformat.com/bb7e3041fbe20d7620164eb20a6c46ec/invoke.js"
+    );
+
+    await delay(1000);
+    await inject(".ad4",
+      { key:"77c8895075b148ec327619ee2e12568c", format:"iframe", height:50, width:320, params:{} },
+      "https://www.highperformanceformat.com/77c8895075b148ec327619ee2e12568c/invoke.js"
+    );
+  })();
+
+  /* ---------- POPUNDER (ONCE PER SESSION) ---------- */
+  if (!sessionStorage.getItem("pu")) {
+    sessionStorage.setItem("pu","1");
+    const pu = document.createElement("script");
+    pu.src = "https://pl28462449.effectivegatecpm.com/22/80/72/228072177ff19884e455f289fa6a6b8a.js";
+    pu.async = true;
+    document.body.appendChild(pu);
+  }
+
+  /* ---------- SOCIAL BAR (IDLE LOAD) ---------- */
+  if (!sessionStorage.getItem("sb")) {
+    sessionStorage.setItem("sb","1");
+    const sb = document.createElement("script");
+    sb.src = "https://pl21579289.effectivegatecpm.com/91/e0/cb/91e0cbf8ea08300e22465980db367b13.js";
+    sb.async = true;
+
+    ("requestIdleCallback" in window)
+      ? requestIdleCallback(() => document.body.appendChild(sb), { timeout: 4000 })
+      : setTimeout(() => document.body.appendChild(sb), 4000);
+  }
 }

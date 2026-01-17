@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 
 /* ===============================
-   BOT FILTER MIDDLEWARE (JS)
+   BOT FILTER MIDDLEWARE (SAFE)
 ================================ */
 
 export function middleware(req) {
-  const ua = (req.headers.get("user-agent") || "").toLowerCase();
+  const h = req.headers;
+  const ua = (h.get("user-agent") || "").toLowerCase();
 
-  /* ---- ALLOWED SEO / ADS BOTS ---- */
+  /* ---- ALLOWED GOOD BOTS (NEVER BLOCK) ---- */
   const ALLOWED_BOTS = [
     "googlebot",
     "adsbot-google",
@@ -24,48 +25,80 @@ export function middleware(req) {
     "telegrambot"
   ];
 
-  /* ---- BLOCKED SCRAPERS / FAKE BOTS ---- */
-  const BLOCKED_BOTS = [
+  /* ---- IMMEDIATE ALLOW FOR GOOD BOTS ---- */
+  if (ALLOWED_BOTS.some(b => ua.includes(b))) {
+    return NextResponse.next();
+  }
+
+  /* ---- HARD BLOCKED SCRAPERS ---- */
+  const HARD_BLOCK = [
     "ahrefs",
     "semrush",
     "mj12bot",
     "dotbot",
     "bytespider",
     "seznambot",
-    "petalbot",
-    "crawler",
-    "spider",
-    "scrape",
+    "petalbot"
+  ];
+
+  if (HARD_BLOCK.some(b => ua.includes(b))) {
+    return block();
+  }
+
+  /* ---- NON-BROWSER / SCRIPTED TOOLS ---- */
+  const SCRIPT_TOOLS = [
+    "curl",
+    "wget",
+    "python",
+    "java",
+    "node-fetch",
+    "axios"
+  ];
+
+  if (SCRIPT_TOOLS.some(b => ua.includes(b))) {
+    return block();
+  }
+
+  /* ---- HEADLESS / AUTOMATION ---- */
+  const HEADLESS = [
     "headless",
     "phantom",
     "puppeteer",
     "playwright",
-    "selenium",
-    "node-fetch",
-    "axios",
-    "curl",
-    "wget",
-    "python",
-    "java"
+    "selenium"
   ];
 
-  /* ---- ALLOW GOOD BOTS ---- */
-  if (ALLOWED_BOTS.some(b => ua.includes(b))) {
-    return NextResponse.next();
+  if (HEADLESS.some(b => ua.includes(b))) {
+    return block();
   }
 
-  /* ---- BLOCK BAD BOTS ---- */
-  if (BLOCKED_BOTS.some(b => ua.includes(b))) {
-    return new NextResponse("Forbidden", {
-      status: 403,
-      headers: {
-        "Cache-Control": "no-store",
-        "X-Robots-Tag": "noindex, nofollow"
-      }
-    });
+  /* ---- FAKE BROWSER DETECTION ---- */
+  const looksLikeChrome =
+    ua.includes("chrome") && !ua.includes("edg");
+
+  const hasClientHints = h.get("sec-ch-ua");
+  const hasLang = h.get("accept-language");
+  const hasEncoding = h.get("accept-encoding");
+
+  // Chrome UA but missing browser headers = fake
+  if (looksLikeChrome && (!hasClientHints || !hasLang || !hasEncoding)) {
+    return block();
   }
 
   return NextResponse.next();
+}
+
+/* ===============================
+   BLOCK RESPONSE
+================================ */
+function block() {
+  return new NextResponse("Forbidden", {
+    status: 403,
+    headers: {
+      "Cache-Control": "no-store",
+      "X-Robots-Tag": "noindex, nofollow"
+    }
+  });
 }
 
 /* ===============================
